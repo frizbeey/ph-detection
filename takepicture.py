@@ -12,6 +12,7 @@ import comparison_test_base as ctb
 global ph
 ph = 0
 
+
 class App:
     def __init__(self, window, window_title, video_source=0):
         self.window = window
