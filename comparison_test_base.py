@@ -18,9 +18,9 @@ def result():
      #   print ("Average Color : " + str(mean_single[i-1]))
     mean_test = mt.test_image()
 
-    print("color : " + str(mean_single[0]))
+    #print("color : " + str(mean_single[0]))
 
-    print("color 2 : " + str(mean_test))
+   # print("color 2 : " + str(mean_test))
 
     #a = mean_single[0][0]
     #b = mean_test[0]
@@ -111,4 +111,4 @@ if __name__ == "__main__" :
     #        cv2.imshow('Difference', different)
         
     #    cv2.waitKey(0)
-    #    cv2.destroyAllWindows()
+    #    cv2.destroyAllWindows()]    

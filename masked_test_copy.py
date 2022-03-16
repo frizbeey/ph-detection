@@ -11,14 +11,14 @@ def adding_color_label (image, mean):
 
     image = cv2.putText(image , "B" + "  | " + "G" + "   | " + "R" ,
                         (80, 25), font , 1, (0,0,0), 1, cv2.LINE_AA)
-    print("mean : ", mean)
+    ##print("mean : ", mean)
 
     for i , rgb in enumerate(mean):
         if i%4 == 0 and i!=0:
             spaceh += 200
             spacev = 0
         for j, colors in enumerate(rgb):
-            print ("rgb :" + str(colors))
+            #print ("rgb :" + str(colors))
             image = cv2.putText(image , str(int(colors[0])) + " | " + str(int(colors[1])) + " | " + str(int(colors[2])),
                             (spaceh + 50, spacev + 50), font , 1, (0,0,0), 1, cv2.LINE_AA)
             spacev += 40
@@ -100,16 +100,16 @@ def color_mean_and_center_coordinates (contours, image):
     center_coordinates = []
     image_contour = []
     
-    print("len :" + str(len(contours)))
+  #  #print("len :" + str(len(contours)))
 
     for i, cnt in enumerate(contours):
         area = cv2.contourArea(cnt)
-        print ("area : ", area)
+        #print ("area : ", area)
         
         if area > 3400 and area < 4500 :
             image_contour.append(contours[i])
     
-    print("len2 :" + str(len(image_contour)))
+    #print("len2 :" + str(len(image_contour)))
 
     for i, cnt in enumerate(image_contour):
         M = cv2.moments(cnt)
@@ -122,15 +122,15 @@ def color_mean_and_center_coordinates (contours, image):
         
    # for i in center_coordinates:
         
-    #    print("center coordinates : ", i)
+    #    #print("center coordinates : ", i)
         
-    #print("size : ", len(center_coordinates))
+    ##print("size : ", len(center_coordinates))
 
     mean, center_coordinates = arrangeing_coordinates(mean, center_coordinates)
     
     #for i in center_coordinates:
         
-        #print("center coordinates : ", i)
+        ##print("center coordinates : ", i)
         
     #return image_contour
 
@@ -140,7 +140,7 @@ def removing_vertical_horizontal_line (BW_image):
     vertical_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1,15))
     detected_Vlines = cv2.morphologyEx(BW_image, cv2.MORPH_OPEN, vertical_kernel, iterations=5)
 
-   # cv2.imshow("vertical kernels", detected_Vlines)
+    #cv2.imshow("vertical kernels", detected_Vlines)
 
     Vcnts = cv2.findContours(detected_Vlines, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
@@ -154,8 +154,8 @@ def removing_vertical_horizontal_line (BW_image):
     horizontal_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (10,1))
     detected_Hlines = cv2.morphologyEx(BW_image, cv2.MORPH_OPEN, horizontal_kernel, iterations=2)
 
-    #cv2.imshow("horizontal kernels", detected_Hlines)
-    #
+   # cv2.imshow("horizontal kernels", detected_Hlines)
+    
     Hcnts = cv2.findContours(detected_Hlines, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     Hcnts = Hcnts[0] if len(Hcnts) == 2 else Hcnts[1]
@@ -201,17 +201,17 @@ if __name__ == "__main__":
     mean, center_coordinates, image_contour = color_mean_and_center_coordinates(contours, image)
     #image_contour = color_mean_and_center_coordinates(contours)
 
-    for i in range(1 , len(mean) + 1) :
-        print (" X , Y : " + str(center_coordinates[i-1]))
-        print (" ")
-        print ("Average Color : " + str(mean[i-1]))
-        print("-------------------------------------")
+    #for i in range(1 , len(mean) + 1) :
+        #print (" X , Y : " + str(center_coordinates[i-1]))
+        #print (" ")
+        #print ("Average Color : " + str(mean[i-1]))
+        #print("-------------------------------------")
 
     text = adding_color_label(text, mean)
 
-    print("mean : ", mean)
-    print("center", str(len(center_coordinates)))
-    print("contour", str(len(image_contour)))
+    #print("mean : ", mean)
+    #print("center", str(len(center_coordinates)))
+    #print("contour", str(len(image_contour)))
 
     cv2.drawContours(image, image_contour, -1, (255, 255, 0), 2)
     #cv2.drawContours(image, contours, -1, (255, 255, 0), 2)

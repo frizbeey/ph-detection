@@ -121,12 +121,12 @@ def test_image():
     image = cv2.imread("test_strip.jpg" , cv2.IMREAD_COLOR)
     mean = []
 
-    mean.append(image[280, 435])
-    mean.append(image[280, 375])
-    mean.append(image[280, 315])
-    mean.append(image[280, 255])
+    mean.append(image[350, 350])
+    mean.append(image[350, 290])
+    mean.append(image[350, 230])
+    mean.append(image[350, 170])
     
-    print("mean : ", mean)
+   # print("mean : ", mean)
     
     
     #mean.append(image[280, 255])
@@ -161,16 +161,16 @@ if __name__ == "__main__":
     #mean, center_coordinates, image_contour = color_mean_and_center_coordinates(contours, image)
     
     #print("center : ", center_coordinates)
-    mean.append(image[280, 435])
-    mean.append(image[280, 375])
-    mean.append(image[280, 315])
-    mean.append(image[280, 255])
+    mean.append(image[350, 350])
+    mean.append(image[350, 290])
+    mean.append(image[350, 230])
+    mean.append(image[350, 170])
     print ("color : ", mean)
     
-    cv2.circle (image, ([435,280]), 5, (0,255, 255), -1)
-    cv2.circle (image, ([375,280]), 5, (0,255, 255), -1)
-    cv2.circle (image, ([315,280]), 5, (0,255, 255), -1)
-    cv2.circle (image, ([255,280]), 5, (0,255, 255), -1)
+    cv2.circle (image, ([350,350]), 5, (0,255, 255), -1)
+    cv2.circle (image, ([290,350]), 5, (0,255, 255), -1)
+    cv2.circle (image, ([230,350]), 5, (0,255, 255), -1)
+    cv2.circle (image, ([170,350]), 5, (0,255, 255), -1)
        
     
 
